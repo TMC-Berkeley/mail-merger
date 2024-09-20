@@ -9,26 +9,28 @@
 
 ## generatePlacementEmails.py
 
-Running the script will output an excel file containing three columns:
-tutor email
-number of students placed with that tutor
-placement email text
-The text should look like the template on the next page of this document
-The line ”df = pd.read_excel('placements.xlsx', sheet_name=0)” describes the spreadsheet that data will be drawn from. Replace ‘placements.xlsx’ with the appropriate spreadsheet file that contains placement data
-If run with the draft flag, it will automatically draft emails in tmcberkeley@gmail.com
+Running the script will output an Excel file containing three columns:
 
-Accepts arugments on the command line as follows:
-`python3 generateEmails.py path/to/placements`
+- Tutor email
+- Number of students placed with that tutor
+- Placement email text
 
-Optional --draft flag to draft emails in gmail
-`python3 generateEmails.py path/to/placements --draft`
+The text should follow the template on the next page of this document.
+
+The line `df = pd.read_excel(placementsPath, sheet_name=0)` describes the spreadsheet from which data will be drawn. Supply `placementsPath` with the appropriate path to the excel file that contains placement data.
+
+If run with the `--draft` flag, it will automatically draft emails in `tmcberkeley@gmail.com`.
+
+Command-line arguments are accepted as follows: `python3 generateEmails.py path/to/placements`
+
+Optional `--draft` flag to draft emails in Gmail: `python3 generateEmails.py path/to/placements --draft`
 
 
 ### Directions for use:
 
 1. Create a file containing all placement pairings. In FA23, we made these pairings in the file called “TMC [SEMESTER YEAR] PLACEMENT INFO” generated from responses to the new student application.  We added three columns: instrument, tutor name, and tutor email
 2. Edit the python script to match your desired output. In particular, make sure to change the date string to reflect the scheduled date of symposium, and change the subject line of the email
-3. Download the file containing the placement pairings and the python script into the same location. CD into that directory in the terminal and run the python script with the command “python3 generatePlacementEmails.py /path/to/placements” Errors may arise from columns not matching the expected input. Feel free to modify the lines within the “for index in df.index:” section to match the column names in your spreadsheet.
+3. Download the file containing the placement pairings and the python script into the same location. CD into that directory in the terminal and run the python script with the command `python3 generatePlacementEmails.py /path/to/placements` Errors may arise from columns not matching the expected input. Feel free to modify the lines within the `for index in df.index:` section to match the column names in your spreadsheet.
 4. Upload the output excel file to the drive for legacy documentation
 
 ## Deltas
