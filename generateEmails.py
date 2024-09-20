@@ -19,7 +19,9 @@ Best,
 The Music Connection
 """
 
+import sys
 import pandas as pd
+import draftEmails
 
 
 def generateGreeting(tutorName, numStudents):
@@ -70,7 +72,7 @@ def generatePlacement(instrument, studentName, grade, parentEmail, parentPhone):
 def generateOutro(numStudents):
     output = ""
     if numStudents == 1:
-        output += 'REMINDER: Our Tutor Symposium is on Sunday, September 17th from 1-3 pm in Social Sciences 104! This meeting is mandatory for all new tutors. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Wednesday, September 20th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. '
+        output += 'REMINDER: Our Tutor Symposium is on Saturday, September 21st from 11:30-1:30 pm in Morrison 120! This meeting is mandatory for all new tutors. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Wednesday, September 20th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. '
     else:
         output += 'REMINDER: Our Tutor Symposium is on Sunday, September 17th from 1-3 pm in Social Sciences 104! This meeting is mandatory for all new tutors. We will be going over how to send your first email to your students’ parents. Please send the first email after the Tutor Symposium and before Wednesday, September 20th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. '
     output += '\n'
@@ -84,45 +86,66 @@ def generateOutro(numStudents):
     return output
 
 
-df = pd.read_excel('placements.xlsx', sheet_name=0)
+def generateEmails(placementsPath='placements.xlsx'):
 
-tutors = set()
-placementDict = {}
-numStudents = {}
-tutorNames = {}
+    df = pd.read_excel(placementsPath, sheet_name=0)
 
-for index in df.index:
-    tutorName = df['TUTOR NAME'][index]
-    studentName = df['Student Name'][index]
-    instrument = df['INSTRUMENT'][index]
-    tutorEmail = df['TUTOR EMAIL'][index]
-    grade = df['Grade Level'][index]
-    parentEmail = df['PARENT Email Address'][index]
-    parentPhone = df['Phone Number - (111) 111 - 1111'][index]
+    tutors = set()
+    placementDict = {}
+    numStudents = {}
+    tutorNames = {}
 
-    tutors.add(tutorEmail)
-    placement = (instrument, studentName, grade, parentEmail, parentPhone)
-    tutorNames[tutorEmail] = tutorName
+    for index in df.index:
+        tutorName = df['TUTOR NAME'][index]
+        studentName = df['Student Name'][index]
+        instrument = df['INSTRUMENT'][index]
+        tutorEmail = df['TUTOR EMAIL'][index]
+        grade = df['Grade Level'][index]
+        parentEmail = df['PARENT Email Address'][index]
+        parentPhone = df['Phone Number - (111) 111 - 1111'][index]
 
-    if tutorEmail in placementDict:
-        allPlacements = list(placementDict[tutorEmail])
-        allPlacements.append(placement)
-        placementDict[tutorEmail] = tuple(allPlacements)
-        numStudents[tutorEmail] = numStudents[tutorEmail] + 1
+        tutors.add(tutorEmail)
+        placement = (instrument, studentName, grade, parentEmail, parentPhone)
+        tutorNames[tutorEmail] = tutorName
+
+        if tutorEmail in placementDict:
+            allPlacements = list(placementDict[tutorEmail])
+            allPlacements.append(placement)
+            placementDict[tutorEmail] = tuple(allPlacements)
+            numStudents[tutorEmail] = numStudents[tutorEmail] + 1
+        else:
+            placementDict[tutorEmail] = tuple([placement])
+            numStudents[tutorEmail] = 1
+
+
+    outputData = []
+
+    for tutor in tutors:
+        text = ""
+        text += generateGreeting(tutorNames[tutor], numStudents[tutor])
+        text += generateAllPlacements(placementDict[tutor])
+        text += generateOutro(numStudents[tutor])
+        outputData.append([tutor, numStudents[tutor], text])
+
+
+    outputDF = pd.DataFrame(outputData, columns=['Email', 'Num Students', 'Text'])
+    outputDF.to_excel("output.xlsx")
+
+    return outputDF
+
+# Accepts arugments on the command line as follows:
+# python3 generateEmails.py path/to/placements
+if __name__ == "__main__":
+
+    outputDF = None
+
+    if len(sys.argv) == 2:
+        outputDF = generateEmails(sys.argv[1])
     else:
-        placementDict[tutorEmail] = tuple([placement])
-        numStudents[tutorEmail] = 1
+        outputDF = generateEmails()
+    
+    sender_email = 'tmcberkeley@gmail.com'
+    subject = "[IMPORTANT] TMC SP24 Student Placement Info + Tutor Symposium"
 
-
-outputData = []
-
-for tutor in tutors:
-    text = ""
-    text += generateGreeting(tutorNames[tutor], numStudents[tutor])
-    text += generateAllPlacements(placementDict[tutor])
-    text += generateOutro(numStudents[tutor])
-    outputData.append([tutor, numStudents[tutor], text])
-
-
-outputDF = pd.DataFrame(outputData, columns=['Email', 'Num Students', 'Text'])
-outputDF.to_excel("output.xlsx")
+    draftEmails.create_drafts_from_df(outputDF)
+    
