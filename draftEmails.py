@@ -45,10 +45,8 @@ def create_draft(service, sender_email, to_email, subject, message_text):
         print(f"An error occurred while creating draft for {to_email}: {str(e)}")
 
 # Main function to iterate over outputDF and create drafts
-def create_drafts_from_df(outputDF):
+def create_drafts_from_df(outputDF, sender_email, subject):
     service = gmail_authenticate()  # Authenticate with Gmail API
-    sender_email = 'tmcberkeley@gmail.com'  # Update with your own Gmail address
-    subject = "Your Music Connection Placement"
 
     for index, row in outputDF.iterrows():
         to_email = row['Email']  # Tutor's email

@@ -2,3 +2,5 @@
 .idea
 .venv
 *.xlsx
+token.pickle
+__pycache__

@@ -13,6 +13,13 @@ number of students placed with that tutor
 placement email text
 The text should look like the template on the next page of this document
 The line ”df = pd.read_excel('placements.xlsx', sheet_name=0)” describes the spreadsheet that data will be drawn from. Replace ‘placements.xlsx’ with the appropriate spreadsheet file that contains placement data
+If run with the draft flag, it will automatically draft emails in tmcberkeley@gmail.com
+
+Accepts arugments on the command line as follows:
+`python3 generateEmails.py path/to/placements`
+
+Optional --draft flag to draft emails in gmail
+`python3 generateEmails.py path/to/placements --draft`
 
 
 ### Directions for use:

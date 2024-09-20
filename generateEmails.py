@@ -88,6 +88,8 @@ def generateOutro(numStudents):
 
 def generateEmails(placementsPath='placements.xlsx'):
 
+    print("Interpreting data from " + placementsPath + "...")
+
     df = pd.read_excel(placementsPath, sheet_name=0)
 
     tutors = set()
@@ -98,10 +100,10 @@ def generateEmails(placementsPath='placements.xlsx'):
     for index in df.index:
         tutorName = df['TUTOR NAME'][index]
         studentName = df['Student Name'][index]
-        instrument = df['INSTRUMENT'][index]
+        instrument = df['Instrument'][index]
         tutorEmail = df['TUTOR EMAIL'][index]
         grade = df['Grade Level'][index]
-        parentEmail = df['PARENT Email Address'][index]
+        parentEmail = df['Email Address'][index]
         parentPhone = df['Phone Number - (111) 111 - 1111'][index]
 
         tutors.add(tutorEmail)
@@ -120,6 +122,8 @@ def generateEmails(placementsPath='placements.xlsx'):
 
     outputData = []
 
+    print("Generating emails...")
+
     for tutor in tutors:
         text = ""
         text += generateGreeting(tutorNames[tutor], numStudents[tutor])
@@ -127,25 +131,35 @@ def generateEmails(placementsPath='placements.xlsx'):
         text += generateOutro(numStudents[tutor])
         outputData.append([tutor, numStudents[tutor], text])
 
+    print("Dumping data to output.xlsx...")
 
     outputDF = pd.DataFrame(outputData, columns=['Email', 'Num Students', 'Text'])
     outputDF.to_excel("output.xlsx")
+
+    print("Done!")
 
     return outputDF
 
 # Accepts arugments on the command line as follows:
 # python3 generateEmails.py path/to/placements
+# Optional --draft flag to draft emails in gmail
+# python3 generateEmails.py path/to/placements --draft
 if __name__ == "__main__":
 
     outputDF = None
 
-    if len(sys.argv) == 2:
+    if len(sys.argv) == 2 or len(sys.argv) == 3:
         outputDF = generateEmails(sys.argv[1])
     else:
         outputDF = generateEmails()
     
-    sender_email = 'tmcberkeley@gmail.com'
-    subject = "[IMPORTANT] TMC SP24 Student Placement Info + Tutor Symposium"
 
-    draftEmails.create_drafts_from_df(outputDF)
+    if len(sys.argv) == 3 and sys.argv[2] == '--draft':
+
+        print("Drafting emails on gmail...")
+
+        sender_email = 'tmcberkeley@gmail.com'
+        subject = "[IMPORTANT] TMC FA24 Student Placement Info + Tutor Symposium"
+
+        draftEmails.create_drafts_from_df(outputDF, sender_email, subject)
     
