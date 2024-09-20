@@ -41,10 +41,15 @@ Import run configurations from a config file such that manual edits to individua
 Thank you for applying to be a private tutor for The Music Connection! Below are the details of your placement:
 
 Instrument: 
+
 Student name: 
+
 Grade: 
+
 Parent email: 
+
 Parent phone: 
+
 
 REMINDER: Our Tutor Symposium is on [Symposium Date] from [Time] in [Room]! This meeting is mandatory for all new tutors. Returning tutors are only required to stay from [Time] pm. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before [Deadline Date] at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. 
 
