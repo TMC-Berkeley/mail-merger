@@ -1,9 +1,9 @@
 # mail-merger
 
 ## Edit History
-Erik Kizior, 9/19/2024: Parameterizing details that change in a semester
-Alyssa Fu, 9/16/2023: Editing README
-Erik Kizior, 9/16/2023: Authoring original script
+> Erik Kizior, 9/19/2024: Parameterizing details that change in a semester
+> Alyssa Fu, 9/16/2023: Editing README
+> Erik Kizior, 9/16/2023: Authoring original script
 
 ## generatePlacementEmails.py
 
