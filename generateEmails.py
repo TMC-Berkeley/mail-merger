@@ -140,7 +140,7 @@ def generateEmails(placementsPath='placements.xlsx'):
 
     return outputDF
 
-# Accepts arugments on the command line as follows:
+# Accepts arguments on the command line as follows:
 # python3 generateEmails.py path/to/placements
 # Optional --draft flag to draft emails in gmail
 # python3 generateEmails.py path/to/placements --draft
