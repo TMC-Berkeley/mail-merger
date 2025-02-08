@@ -3,6 +3,7 @@
 # Author: Erik Kizior
 
 ## Edit History
+- Rachel Sang, 2/07/2025: Created hours.py to send end of semester tutor emails containing total volunteer hours.
 - Erik Kizior, 9/19/2024: Integrating gmail API into script to directly create drafts
 - Alyssa Fu, 9/16/2023: Editing README
 - Erik Kizior, 9/16/2023: Creating original script
@@ -58,5 +59,9 @@ Thank you and we look forward to working with you! Please email back if you have
 Best,
 The Music Connection
 
+## hours.py
+Divas and baddies. Ladies and gentlemen. I, Rachel Soobin Sang, have usurped my own limitations and provided a delightful little Python file to automate end-of-the-semester emails to all of our tutors at the request of Aaron Lee. Holy moly guys, I feel accomplished. I HOPE MY PREDECESSORS ARE PROUD, and I hope that this program is helpful. 
 
-
+1. Create an Excel file containing tutor emails, tutor names, and their total number of volunteer hours. If you do not have this file, the Chief Operations Officer should have a Google Spreadsheet of every tutor's logged volunteer hours, including workshops. Export this file as a .xlsx file. In FA24, this spreadsheet was named hours.xlsx with three columns: EMAIL, TUTOR NAME, and TOTAL. 
+2. Edit the provided Python script to match your needs. For instance, adjust the statistics and semester and year to reflect the semester that you are currently working in. 
+3. Download the Python script and the Excel file into the same directory. See Erik's instructions for generateEmails.py for more details if you are unsure of how to do this. Run the program with the command `python3 hours.py path/to/placements --draft`
