@@ -3,7 +3,8 @@ Extract data in the form:
 
 Hi [TUTOR NAME],
 
-Thank you for a successful fall semester. Overall, we had a total of 600+ hours volunteered across 77 tutors and 112 private students. You can find your total volunteer hours in this message.
+On behalf of the TMC community, we want to thank you for a successful fall semester. Overall, we had a total of 600+ hours volunteered
+across 77 tutors and 112 private students. We have included your total number of hours volunteered during the Fall 2024 semester below. 
 Tutor Name: [TUTOR NAME]
 Total Hours: [TOTAL HOURS]
 
@@ -21,21 +22,21 @@ import draftEmails
 
 def generateMessage(tutorName, numHours):
     return (f"Hi {tutorName},\n\n"
-            "Thank you for a successful fall semester. Overall, we had a total of 600+ hours volunteered "
-            "across 77 tutors and 112 private students. You can find your total volunteer hours in this message.\n\n"
+            "On behalf of the TMC community, we want to thank you for a successful fall semester. Overall, we had a total of 600+ hours volunteered "
+            "across 77 tutors and 112 private students. We have included your total number of hours volunteered during the Fall 2024 semester below.\n\n"
             f"Tutor Name: {tutorName} \n"
-            f"Total Hours: {numHours} \n\n"
-            "Thank you again for all your hard work during the Fall 2024 semester. We hope to see you continue on this semester!\n\n"
+            f"Total Hours: {numHours} hours \n\n"
+            "Thank you again for all your hard work during the Fall 2024 semester. We hope to see you continue this semester!\n\n"
             "Sincerely,\n"
             "The Music Connection")
 
 
 
-def generateEmails(placementsPath='placements.xlsx'):
+def generateEmails(hoursPath='hours.xlsx'):
 
-    print("Interpreting data from " + placementsPath + "...")
+    print("Interpreting data from " + hoursPath + "...")
 
-    df = pd.read_excel(placementsPath, sheet_name=0)
+    df = pd.read_excel(hoursPath, sheet_name=0)
 
     outputData = []
 
