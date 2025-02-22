@@ -65,7 +65,3 @@ Divas and baddies. Ladies and gentlemen. I, Rachel Soobin Sang, have usurped my 
 1. Create an Excel file containing tutor emails, tutor names, and their total number of volunteer hours. If you do not have this file, the Chief Operations Officer should have a Google Spreadsheet of every tutor's logged volunteer hours, including workshops. Export this file as a .xlsx file. In FA24, this spreadsheet was named hours.xlsx with three columns: EMAIL, TUTOR NAME, and TOTAL. 
 2. Edit the provided Python script to match your needs. For instance, adjust the statistics and semester and year to reflect the semester that you are currently working in. 
 3. Download the Python script and the Excel file into the same directory. See Erik's instructions for generateEmails.py for more details if you are unsure of how to do this. Run the program with the command `python3 hours.py path/to/placements --draft`
-<<<<<<< HEAD
-=======
-
->>>>>>> e5316657c8977e7d3780a4b61e855228359c28e6
