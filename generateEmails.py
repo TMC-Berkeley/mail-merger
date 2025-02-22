@@ -162,4 +162,3 @@ if __name__ == "__main__":
         subject = "[IMPORTANT] TMC FA24 Student Placement Info + Tutor Symposium"
 
         draftEmails.create_drafts_from_df(outputDF, sender_email, subject)
-    

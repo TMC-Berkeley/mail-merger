@@ -54,6 +54,10 @@ def generateEmails(hoursPath='hours.xlsx'):
     print("Dumping data to output.xlsx...")
 
     outputDF = pd.DataFrame(outputData)
+<<<<<<< HEAD
+=======
+    outputDF.to_excel("output.xlsx")
+>>>>>>> e5316657c8977e7d3780a4b61e855228359c28e6
 
     print("Done!")
 
@@ -76,4 +80,8 @@ if __name__ == "__main__":
         sender_email = 'tmcberkeley@gmail.com'
         subject = "[IMPORTANT] TMC FA24 Total Volunteer Hours"
 
+<<<<<<< HEAD
         draftEmails.create_drafts_from_df(outputDF, sender_email, subject)
+=======
+        draftEmails.create_drafts_from_df(outputDF, sender_email, subject)
+>>>>>>> e5316657c8977e7d3780a4b61e855228359c28e6
