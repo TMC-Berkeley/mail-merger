@@ -11,7 +11,7 @@ Grade:
 Parent email: 
 Parent phone: 
 
-REMINDER: Our Tutor Symposium is on Sunday, September 17th from 1-3 pm in Social Sciences 104! This meeting is mandatory for all new tutors. Returning tutors are only required to stay from 1-2 pm. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Wednesday, September 20th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. 
+REMINDER: Our Tutor Symposium is on Saturday, February 22 from 11am -1pm in bNorth 82D in MLK! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Tuesday, February 25th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. 
 
 Thank you and we look forward to working with you! Please email back if you have any questions!
 
@@ -72,9 +72,9 @@ def generatePlacement(instrument, studentName, grade, parentEmail, parentPhone):
 def generateOutro(numStudents):
     output = ""
     if numStudents == 1:
-        output += 'REMINDER: Our Tutor Symposium is on Saturday, September 21st from 11:30-1:30 pm in Morrison 250! This meeting is mandatory for all new tutors. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Tuesday, September 24th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. '
+        output += 'REMINDER: Our Tutor Symposium is on Saturday, February 22 from 11am -1pm in bNorth 82D in MLK! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Tuesday, February 25th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication.  '
     else:
-        output += 'REMINDER: Our Tutor Symposium is on Saturday, September 21st from 11:30-1:30 pm in Morrison 250! This meeting is mandatory for all new tutors. We will be going over how to send your first email to your students’ parents. Please send the first email after the Tutor Symposium and before Tuesday, September 24th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. '
+        output += 'REMINDER: Our Tutor Symposium is on Saturday, February 22 from 11am -1pm in bNorth 82D in MLK! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Tuesday, February 25th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. '
     output += '\n'
     output += '\n'
     output += 'Thank you and we look forward to working with you! Please email back if you have any questions!'
@@ -90,7 +90,7 @@ def generateEmails(placementsPath='placements.xlsx'):
 
     print("Interpreting data from " + placementsPath + "...")
 
-    df = pd.read_excel(placementsPath, sheet_name=0)
+    df = pd.read_excel(placementsPath, sheet_name=0, dtype={'Grade Level': str})
 
     tutors = set()
     placementDict = {}
@@ -162,4 +162,3 @@ if __name__ == "__main__":
         subject = "[IMPORTANT] TMC FA24 Student Placement Info + Tutor Symposium"
 
         draftEmails.create_drafts_from_df(outputDF, sender_email, subject)
-    
