@@ -8,7 +8,7 @@ across ___ tutors and ____ private students. We have included your total number 
 Tutor Name: [TUTOR NAME]
 Total Hours: [TOTAL HOURS]
 
-Thank you again for all your hard work during the Fall 2024 semester. We hope to see you continue on this semester!
+Thank you again for all your hard work during the _____ semester. We hope to see you continue on next semester!
 
 Sincerely,
 The Music Connection
@@ -22,13 +22,13 @@ import draftEmails
 
 def generateMessage(tutorName, numHours):
     return (f"Hi {tutorName},\n\n"
-            "On behalf of the TMC community, we want to thank you for a successful spring semester. Overall, we had a total of 400+ hours volunteered "
-            "across 66 tutors and 85 private students. We have included your total number of hours volunteered during the Spring 2025 semester below, "
+            "On behalf of the TMC community, we want to thank you for a successful spring semester! Overall, we had a total of 400+ hours volunteered "
+            "across 66 tutors and 85 private students. For your reference, we have included your total volunteered hours during the Spring 2025 semester below, "
             "as reported by you throughout the semester.\n\n"
             f"Tutor Name: {tutorName} \n"
             f"Total Hours: {numHours} hours \n\n"
             "If you believe that your hours are logged incorrectly, please send us an email at tmcberkeley@gmail.com. "
-            "Thank you again for all your hard work during the Spring 2025 semester. We hope to see you continue this semester!\n\n"
+            "Thank you again for all your hard work during the Spring 2025 semester. We hope to see you continue in Fall 2025!\n\n"
             "Sincerely,\n"
             "The Music Connection")
 
