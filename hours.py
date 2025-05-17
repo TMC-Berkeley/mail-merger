@@ -77,6 +77,6 @@ if __name__ == "__main__":
         print("Drafting emails on gmail...")
 
         sender_email = 'tmcberkeley@gmail.com'
-        subject = "[IMPORTANT] TMC FA24 Total Volunteer Hours"
+        subject = "[IMPORTANT] TMC SP25 Total Volunteer Hours"
 
         draftEmails.create_drafts_from_df(outputDF, sender_email, subject)
