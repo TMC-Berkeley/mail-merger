@@ -3,8 +3,8 @@ Extract data in the form:
 
 Hi [TUTOR NAME],
 
-On behalf of the TMC community, we want to thank you for a successful fall semester. Overall, we had a total of 600+ hours volunteered
-across 77 tutors and 112 private students. We have included your total number of hours volunteered during the Fall 2024 semester below. 
+On behalf of the TMC community, we want to thank you for a successful ___ semester. Overall, we had a total of 600+ hours volunteered
+across ___ tutors and ____ private students. We have included your total number of hours volunteered during the ____ semester below. 
 Tutor Name: [TUTOR NAME]
 Total Hours: [TOTAL HOURS]
 
@@ -22,11 +22,13 @@ import draftEmails
 
 def generateMessage(tutorName, numHours):
     return (f"Hi {tutorName},\n\n"
-            "On behalf of the TMC community, we want to thank you for a successful fall semester. Overall, we had a total of 600+ hours volunteered "
-            "across 77 tutors and 112 private students. We have included your total number of hours volunteered during the Fall 2024 semester below.\n\n"
+            "On behalf of the TMC community, we want to thank you for a successful spring semester. Overall, we had a total of 400+ hours volunteered "
+            "across 66 tutors and 85 private students. We have included your total number of hours volunteered during the Spring 2025 semester below, "
+            "as reported by you throughout the semester.\n\n"
             f"Tutor Name: {tutorName} \n"
             f"Total Hours: {numHours} hours \n\n"
-            "Thank you again for all your hard work during the Fall 2024 semester. We hope to see you continue this semester!\n\n"
+            "If you believe that your hours are logged incorrectly, please send us an email at tmcberkeley@gmail.com. "
+            "Thank you again for all your hard work during the Spring 2025 semester. We hope to see you continue this semester!\n\n"
             "Sincerely,\n"
             "The Music Connection")
 
@@ -54,10 +56,7 @@ def generateEmails(hoursPath='hours.xlsx'):
     print("Dumping data to output.xlsx...")
 
     outputDF = pd.DataFrame(outputData)
-<<<<<<< HEAD
-=======
     outputDF.to_excel("output.xlsx")
->>>>>>> e5316657c8977e7d3780a4b61e855228359c28e6
 
     print("Done!")
 
@@ -80,8 +79,4 @@ if __name__ == "__main__":
         sender_email = 'tmcberkeley@gmail.com'
         subject = "[IMPORTANT] TMC FA24 Total Volunteer Hours"
 
-<<<<<<< HEAD
         draftEmails.create_drafts_from_df(outputDF, sender_email, subject)
-=======
-        draftEmails.create_drafts_from_df(outputDF, sender_email, subject)
->>>>>>> e5316657c8977e7d3780a4b61e855228359c28e6
