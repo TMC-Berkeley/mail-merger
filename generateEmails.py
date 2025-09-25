@@ -11,7 +11,7 @@ Grade:
 Parent email: 
 Parent phone: 
 
-REMINDER: Our Tutor Symposium is on Saturday, February 22 from 11am -1pm in bNorth 82D in MLK! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Tuesday, February 25th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. 
+REMINDER: Our Tutor Symposium is on Saturday, September 27 from 11am -1pm in bNorth 82D in MLK! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student's parents. Please send the first email after the Tutor Symposium and before Tuesday, September 30th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. 
 
 Thank you and we look forward to working with you! Please email back if you have any questions!
 
@@ -69,12 +69,13 @@ def generatePlacement(instrument, studentName, grade, parentEmail, parentPhone):
     return output
 
 
-def generateOutro(numStudents):
+def generateOutro(numStudents, symposium_date="Saturday, February 22", symposium_time="11am -1pm", 
+                 symposium_location="bNorth 82D in MLK", deadline_date="Tuesday, February 25th"):
     output = ""
     if numStudents == 1:
-        output += 'REMINDER: Our Tutor Symposium is on Saturday, February 22 from 11am -1pm in bNorth 82D in MLK! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Tuesday, February 25th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication.  '
+        output += f'REMINDER: Our Tutor Symposium is on {symposium_date} from {symposium_time} in {symposium_location}! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student\'s parents. Please send the first email after the Tutor Symposium and before {deadline_date} at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication.  '
     else:
-        output += 'REMINDER: Our Tutor Symposium is on Saturday, February 22 from 11am -1pm in bNorth 82D in MLK! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student’s parents. Please send the first email after the Tutor Symposium and before Tuesday, February 25th at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. '
+        output += f'REMINDER: Our Tutor Symposium is on {symposium_date} from {symposium_time} in {symposium_location}! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student\'s parents. Please send the first email after the Tutor Symposium and before {deadline_date} at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication. '
     output += '\n'
     output += '\n'
     output += 'Thank you and we look forward to working with you! Please email back if you have any questions!'
@@ -86,7 +87,9 @@ def generateOutro(numStudents):
     return output
 
 
-def generateEmails(placementsPath='placements.xlsx'):
+def generateEmails(placementsPath='placements.xlsx', symposium_date="Saturday, September 27", 
+                  symposium_time="11am -1pm", symposium_location="bNorth 82D in MLK", 
+                  deadline_date="Tuesday, September 30th"):
 
     print("Interpreting data from " + placementsPath + "...")
 
@@ -128,7 +131,8 @@ def generateEmails(placementsPath='placements.xlsx'):
         text = ""
         text += generateGreeting(tutorNames[tutor], numStudents[tutor])
         text += generateAllPlacements(placementDict[tutor])
-        text += generateOutro(numStudents[tutor])
+        text += generateOutro(numStudents[tutor], symposium_date, symposium_time, 
+                             symposium_location, deadline_date)
         outputData.append([tutor, numStudents[tutor], text])
 
     print("Dumping data to output.xlsx...")
