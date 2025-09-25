@@ -29,10 +29,13 @@ Optional `--draft` flag to draft emails in Gmail: `python3 generateEmails.py pat
 
 ### Directions for use:
 
-1. Create a file containing all placement pairings. In FA23, we made these pairings in the file called “TMC [SEMESTER YEAR] PLACEMENT INFO” generated from responses to the new student application.  We added three columns: instrument, tutor name, and tutor email
+1. Create a file containing all placement pairings. In FA23, we made these pairings in the file called “TMC [SEMESTER YEAR] PLACEMENT INFO” generated from responses to the new student application.  We added three columns: instrument, tutor name, and tutor email.
+   NOTE: Make sure that the "Grades" column is formatted to be plain text, not automatically formatted
+   as dates.
 2. Edit the python script to match your desired output. In particular, make sure to change the date string to reflect the scheduled date of symposium, and change the subject line of the email
-3. Download the file containing the placement pairings and the python script into the same location. CD into that directory in the terminal and run the python script with the command `python3 generatePlacementEmails.py /path/to/placements` Errors may arise from columns not matching the expected input. Feel free to modify the lines within the `for index in df.index:` section to match the column names in your spreadsheet.
-4. Upload the output excel file to the drive for legacy documentation
+3. Make sure that the appropriate tokens are deleted and appropriate credentials exist in the same filepath as the algorithm and the placements excel file.
+4. Download the file containing the placement pairings and the python script into the same location. CD into that directory in the terminal and run the python script with the command `python3 generatePlacementEmails.py /path/to/placements` Errors may arise from columns not matching the expected input. Feel free to modify the lines within the `for index in df.index:` section to match the column names in your spreadsheet.
+5. Upload the output excel file to the drive for legacy documentation
 
 ## Deltas
 Import run configurations from a config file such that manual edits to individual lines of code are not necessary.
