@@ -69,8 +69,8 @@ def generatePlacement(instrument, studentName, grade, parentEmail, parentPhone):
     return output
 
 
-def generateOutro(numStudents, symposium_date="Saturday, February 22", symposium_time="11am -1pm", 
-                 symposium_location="bNorth 82D in MLK", deadline_date="Tuesday, February 25th"):
+def generateOutro(numStudents, symposium_date="Saturday, September 27", symposium_time="11am -1pm", 
+                 symposium_location="bNorth 82D in MLK", deadline_date="Tuesday, September 30th"):
     output = ""
     if numStudents == 1:
         output += f'REMINDER: Our Tutor Symposium is on {symposium_date} from {symposium_time} in {symposium_location}! This meeting is mandatory for all tutors. Returning tutors are only required to stay from 11am-12 pm. We will be going over how to send your first email to your student\'s parents. Please send the first email after the Tutor Symposium and before {deadline_date} at 11:59 pm, and make sure to CC tmcberkeley@gmail.com on the first communication.  '
@@ -163,6 +163,6 @@ if __name__ == "__main__":
         print("Drafting emails on gmail...")
 
         sender_email = 'tmcberkeley@gmail.com'
-        subject = "[IMPORTANT] TMC FA24 Student Placement Info + Tutor Symposium"
+        subject = "[IMPORTANT] TMC FA25 Student Placement Info + Tutor Symposium"
 
         draftEmails.create_drafts_from_df(outputDF, sender_email, subject)
